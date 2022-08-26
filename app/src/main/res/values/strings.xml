@@ -2,4 +2,5 @@
     <string name="app_name">NewsApp</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="splash_text">My News</string>
+    <string name="popular_news">Popular news</string>
 </resources>
