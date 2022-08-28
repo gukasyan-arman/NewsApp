@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/articleImage"
+        android:background="@drawable/bg_image_10"
         android:layout_width="88dp"
         android:layout_height="84dp"
         android:scaleType="centerCrop"
