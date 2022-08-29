@@ -9,12 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.databinding.FragmentMainBinding
-import com.example.newsapp.models.NewsResponse
 import com.example.newsapp.ui.adapters.NewsAdapter
 import com.example.newsapp.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_main.*
-import retrofit2.Response
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -37,19 +34,19 @@ class MainFragment : Fragment() {
         viewModel.newsLiveData.observe(viewLifecycleOwner) { response ->
             when(response) {
                 is Resource.Success -> {
-                    progressBar.visibility = View.INVISIBLE
+                    binding.progressBar.visibility = View.INVISIBLE
                     response.data?.let {
                         newsAdapter.differ.submitList(it.articles)
                     }
                 }
                 is Resource.Error -> {
-                    progressBar.visibility = View.INVISIBLE
+                    binding.progressBar.visibility = View.INVISIBLE
                     response.data?.let {
                         Log.e("checkData", "MainFragment: error: ${it}")
                     }
                 }
                 is Resource.Loading -> {
-                    progressBar.visibility = View.VISIBLE
+                    binding.progressBar.visibility = View.VISIBLE
                 }
             }
         }
