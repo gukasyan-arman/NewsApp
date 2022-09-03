@@ -11,15 +11,19 @@ import android.view.ViewGroup
 import android.webkit.URLUtil
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.newsapp.databinding.FragmentDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.net.URL
 
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
 
     lateinit var binding: FragmentDetailBinding
     private val bundleArgs: DetailFragmentArgs by navArgs()
+    private val viewModel by viewModels<DetailViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,6 +65,12 @@ class DetailFragment : Fragment() {
                     ).show()
                 }
             }
+
+            binding.iconFavorite.setOnClickListener {
+                viewModel.saveFavoriteArticle(article)
+
+            }
+
         }
     }
 
